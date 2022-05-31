@@ -18,7 +18,7 @@
     <h2>Her kan du slette, opdatere eller slette ryttere:</h2>
     <aside>
     <p>Opret en ny rytter:</p>
-        <form action="/api/riders" method="POST">
+        <form id="create-form" action="/api/riders" method="POST">
             <label for="first-name"></label>
             <input type="text" name="first-name">
             <label for="last-name"></label>
@@ -27,12 +27,12 @@
             <input type="text" name="country">
             <label for="points"></label>
             <input type="text" name="points">
-            <input type="submit">
+            <input type="submit" onclick="createRider()">
         </form>
     </aside>
     <aside>
     <p>Opdatere en ny rytter:</p>
-        <form action="/api/riders" method="PUT">
+        <form id="edit-form" action="/api/riders" method="PUT">
             <label for="first-name"></label>
             <input type="text" name="first-name">
             <label for="last-name"></label>
@@ -41,12 +41,12 @@
             <input type="text" name="country">
             <label for="points"></label>
             <input type="text" name="points">
-            <input type="submit">
+            <input type="submit" onclick="editRider()">
         </form>
     </aside>
     <aside>
     <p>Slet en ny rytter:</p>
-        <form action="/api/riders" method="POST">
+        <form id="delete-form" action="/api/riders" method="DELETE">
             <label for="first-name"></label>
             <input type="text" name="first-name">
             <label for="last-name"></label>
@@ -55,7 +55,7 @@
             <input type="text" name="country">
             <label for="points"></label>
             <input type="text" name="points">
-            <input type="submit">
+            <input type="submit" onclick="deleteRider()">
         </form>
     </aside>
     <footer></footer>
