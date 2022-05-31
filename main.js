@@ -1,7 +1,7 @@
 console.log("tester script implementation.")
 
-//Et cache objekt til at opbevare data fra databasen
-function cache(){
+//Et genericCache objekt til at opbevare data fra databasen
+function genericCache(){
     //array til at holde på de respektive data objekter
     let allDataObjectsCache = []
 
@@ -18,11 +18,13 @@ function cache(){
     }
 }
 
-const localRiderDataCache = cache()
-
 const URL = "http://localhost:8080"
 const container = document.getElementById("test-container")
 const ridersTable = document.getElementById("riders-table")
+const teamsContainer = document.getElementById("teams-container")
+
+const localRiderDataCache = genericCache()
+const localTeamsDataCache = genericCache()
 
 let testArray = []
 
@@ -30,10 +32,10 @@ fetch(URL+"/api/riders")
 .then( response => response.json())
 .then(result => {
     localRiderDataCache.setAll(result)
-    insertData(result)
+    insertRidersData()
 })
 
-function insertData(object){
+function insertRidersData(){
     let localArray = localRiderDataCache.getAll()
     let content = ""
     localArray.forEach( el => content += rowDataBuilder(el))
@@ -52,3 +54,10 @@ function rowDataBuilder(item){
     </tr>`
 
 }
+
+fetch(URL+"/api/teams")
+.then(response => response.json())
+.then(result => {
+    localTeamsDataCache.setAll(result)
+    localTeamsDataCache.getAll().forEach(element => console.log(element))
+})
